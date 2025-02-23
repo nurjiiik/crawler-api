@@ -2391,3 +2391,14 @@
 {"level":"error","message":"Redis error: Connection timeout","timestamp":"2025-02-23T11:03:58.286Z"}
 {"level":"info","message":"Redis connected successfully","timestamp":"2025-02-23T11:03:58.363Z"}
 {"level":"info","message":"Received shutdown signal. Closing server...","timestamp":"2025-02-23T11:09:45.848Z"}
+{"level":"info","message":"Redis connection already established","timestamp":"2025-02-23T11:23:56.155Z"}
+{"level":"info","message":"Redis connection established","timestamp":"2025-02-23T11:23:56.171Z"}
+{"level":"info","message":"Server is running on http://0.0.0.0:3000","timestamp":"2025-02-23T11:23:56.190Z"}
+{"level":"info","message":"Redis connected successfully","timestamp":"2025-02-23T11:23:56.262Z"}
+{"level":"info","message":"Received shutdown signal. Closing server...","timestamp":"2025-02-23T11:29:12.952Z"}
+{"level":"info","message":"Redis connection already established","timestamp":"2025-02-23T11:32:10.247Z"}
+{"level":"info","message":"Redis connection established","timestamp":"2025-02-23T11:32:10.261Z"}
+{"level":"info","message":"Server is running on http://0.0.0.0:3000","timestamp":"2025-02-23T11:32:10.285Z"}
+{"level":"info","message":"Redis connected successfully","timestamp":"2025-02-23T11:32:10.388Z"}
+{"level":"info","message":"Received shutdown signal. Closing server...","timestamp":"2025-02-23T11:32:24.617Z"}
+{"level":"error","message":"Error during shutdown: The client is closed","stack":"Error: The client is closed\n    at RedisSocket.quit (C:\\Users\\77000\\Desktop\\WorkProjects\\Crawler-API2\\node_modules\\@redis\\client\\dist\\lib\\client\\socket.js:70:19)\n    at Commander.QUIT (C:\\Users\\77000\\Desktop\\WorkProjects\\Crawler-API2\\node_modules\\@redis\\client\\dist\\lib\\client\\index.js:260:71)\n    at process.gracefulShutdown (C:\\Users\\77000\\Desktop\\WorkProjects\\Crawler-API2\\src\\index.js:46:27)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-02-23T11:32:33.643Z"}
