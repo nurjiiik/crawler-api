@@ -109,11 +109,11 @@ app.use(helmet({
 
 // CORS configuration
 app.use(cors({
-  origin: true,
+  origin: '*',
   methods: ['GET', 'POST', 'OPTIONS', 'HEAD', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Origin', 'Accept'],
   exposedHeaders: ['Content-Length', 'Content-Type'],
-  credentials: true,
+  credentials: false,
   optionsSuccessStatus: 204,
   maxAge: 86400
 }));
