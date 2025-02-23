@@ -81,6 +81,15 @@ process.on('SIGINT', cleanup);
 
 // Основные middleware
 app.use(express.json());
+
+// Handle preflight requests
+app.use((req, res, next) => {
+  if (req.method === 'OPTIONS') {
+    res.status(204).end();
+    return;
+  }
+  next();
+});
 app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' },
   crossOriginOpenerPolicy: { policy: 'unsafe-none' },
@@ -100,14 +109,17 @@ app.use(helmet({
 
 // CORS configuration
 app.use(cors({
-  origin: '*',
+  origin: true,
   methods: ['GET', 'POST', 'OPTIONS', 'HEAD', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Origin', 'Accept'],
   exposedHeaders: ['Content-Length', 'Content-Type'],
-  credentials: false,
+  credentials: true,
   optionsSuccessStatus: 204,
   maxAge: 86400
 }));
+
+// Enable pre-flight requests for all routes
+app.options('*', cors());
 
 // Handle preflight requests
 app.use((req, res, next) => {
