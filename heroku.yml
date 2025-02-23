@@ -1,0 +1,10 @@
+setup:
+  addons:
+    - plan: heroku-redis:mini
+
+build:
+  docker:
+    web: Dockerfile
+
+run:
+  web: node src/index.js

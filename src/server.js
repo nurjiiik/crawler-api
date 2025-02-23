@@ -98,28 +98,19 @@ app.use(helmet({
   }
 }));
 
-// Базовая настройка CORS через пакет cors
+// CORS configuration
 app.use(cors({
-  origin: true,
+  origin: '*',
   methods: ['GET', 'POST', 'OPTIONS', 'HEAD', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Origin', 'Accept'],
-  exposedHeaders: ['Content-Length', 'Content-Type', 'Access-Control-Allow-Origin'],
-  credentials: true,
+  exposedHeaders: ['Content-Length', 'Content-Type'],
+  credentials: false,
   optionsSuccessStatus: 204,
-  maxAge: 86400,
-  preflightContinue: false
+  maxAge: 86400
 }));
 
-// Дополнительный middleware для CORS и обработки preflight-запросов
+// Handle preflight requests
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  // Если credentials не требуются, можно передать false
-  res.header('Access-Control-Allow-Credentials', 'false');
-  res.header('Access-Control-Max-Age', '86400');
-  res.header('Access-Control-Expose-Headers', 'Content-Length, Content-Type, Access-Control-Allow-Origin');
-  res.header('Vary', 'Origin');
   if (req.method === 'OPTIONS') {
     res.status(204).end();
     return;
