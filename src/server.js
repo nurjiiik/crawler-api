@@ -86,29 +86,17 @@ process.on('SIGINT', cleanup);
 // Middlewares
 app.use(express.json());
 app.use(helmet({
-  crossOriginResourcePolicy: { policy: "cross-origin" },
-  crossOriginOpenerPolicy: { policy: "unsafe-none" },
+  crossOriginResourcePolicy: false,
+  crossOriginOpenerPolicy: false,
   crossOriginEmbedderPolicy: false,
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-      connectSrc: ["'self'", "*"],
-      imgSrc: ["'self'", "data:", "*"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      fontSrc: ["'self'", "data:"],
-      objectSrc: ["'none'"],
-      mediaSrc: ["'self'"],
-      frameSrc: ["'self'"]
-    }
-  }
+  contentSecurityPolicy: false
 }));
 app.use(cors({
-  origin: true,
-  methods: ['GET', 'POST', 'OPTIONS', 'HEAD'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Origin', 'Accept', 'Access-Control-Allow-Headers'],
-  exposedHeaders: ['Content-Length', 'X-RateLimit-Limit', 'X-RateLimit-Remaining', 'Access-Control-Allow-Origin', 'Access-Control-Allow-Credentials'],
-  credentials: true,
+  origin: '*',
+  methods: ['GET', 'POST', 'OPTIONS', 'HEAD', 'PUT', 'PATCH', 'DELETE'],
+  allowedHeaders: ['*'],
+  exposedHeaders: ['*'],
+  credentials: false,
   optionsSuccessStatus: 204,
   maxAge: 86400,
   preflightContinue: false
@@ -120,9 +108,9 @@ app.options('*', cors());
 // Additional headers for CORS
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, HEAD');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Origin, Accept');
-  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD');
+  res.header('Access-Control-Allow-Headers', '*');
+  res.header('Access-Control-Allow-Credentials', 'false');
   next();
 });
 
