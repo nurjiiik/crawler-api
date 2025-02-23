@@ -2424,3 +2424,27 @@
 {"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:44:06.775Z"}
 {"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:44:08.541Z"}
 {"level":"info","message":"Received shutdown signal. Closing server...","timestamp":"2025-02-23T11:44:22.093Z"}
+{"level":"info","message":"Redis connection already established","timestamp":"2025-02-23T11:47:46.386Z"}
+{"level":"info","message":"Redis connection established","timestamp":"2025-02-23T11:47:46.417Z"}
+{"level":"info","message":"Server is running on http://0.0.0.0:3000","timestamp":"2025-02-23T11:47:46.445Z"}
+{"level":"info","message":"Redis connected successfully","timestamp":"2025-02-23T11:47:46.492Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:07.179Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:09.491Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:09.761Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:10.472Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:10.709Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:50:18.814Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:50:18.967Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:50:19.374Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:50:19.587Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:50:19.738Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:52.685Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:55.822Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:56.688Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:58.020Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:51:01.801Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:51:06.081Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:51:07.156Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:51:07.614Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:51:07.916Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:51:08.571Z"}

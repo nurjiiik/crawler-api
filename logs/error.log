@@ -2265,3 +2265,18 @@
 {"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:43:33.106Z"}
 {"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:44:06.775Z"}
 {"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:44:08.541Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:07.179Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:09.491Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:09.761Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:10.472Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:10.709Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:50:18.814Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:50:18.967Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:50:19.374Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:50:19.587Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:50:19.738Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:52.685Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:55.822Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:56.688Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:58.020Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:51:01.801Z"}
