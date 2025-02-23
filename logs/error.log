@@ -2280,3 +2280,11 @@
 {"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:56.688Z"}
 {"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:50:58.020Z"}
 {"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:51:01.801Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:51:06.081Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:51:07.156Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:51:07.614Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:51:07.916Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:51:08.571Z"}
+{"level":"error","message":"Puppeteer error: Navigation timeout of 15000 ms exceeded","timestamp":"2025-02-23T11:52:04.680Z"}
+{"level":"error","message":"Crawl error: Cannot read properties of null (reading 'match')","timestamp":"2025-02-23T11:52:06.756Z"}
+{"level":"error","message":"Error during shutdown: The client is closed","stack":"Error: The client is closed\n    at RedisSocket.quit (C:\\Users\\77000\\Desktop\\WorkProjects\\Crawler-API2\\node_modules\\@redis\\client\\dist\\lib\\client\\socket.js:70:19)\n    at Commander.QUIT (C:\\Users\\77000\\Desktop\\WorkProjects\\Crawler-API2\\node_modules\\@redis\\client\\dist\\lib\\client\\index.js:260:71)\n    at process.gracefulShutdown (C:\\Users\\77000\\Desktop\\WorkProjects\\Crawler-API2\\src\\index.js:46:27)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-02-23T11:52:24.196Z"}

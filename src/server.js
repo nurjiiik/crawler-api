@@ -91,13 +91,13 @@ app.use(helmet({
   crossOriginEmbedderPolicy: false
 }));
 app.use(cors({
-  origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : '*',
+  origin: true,
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Origin', 'Accept'],
   exposedHeaders: ['Content-Length', 'X-RateLimit-Limit', 'X-RateLimit-Remaining', 'Access-Control-Allow-Origin'],
   credentials: true,
-  optionsSuccessStatus: 204,
-  maxAge: 3600,
+  optionsSuccessStatus: 200,
+  maxAge: 86400,
   preflightContinue: false
 }));
 
