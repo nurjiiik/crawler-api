@@ -88,10 +88,23 @@ app.use(express.json());
 app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" },
   crossOriginOpenerPolicy: { policy: "unsafe-none" },
-  crossOriginEmbedderPolicy: false
+  crossOriginEmbedderPolicy: false,
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+      connectSrc: ["'self'", "*"],
+      imgSrc: ["'self'", "data:", "*"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      fontSrc: ["'self'", "data:"],
+      objectSrc: ["'none'"],
+      mediaSrc: ["'self'"],
+      frameSrc: ["'self'"]
+    }
+  }
 }));
 app.use(cors({
-  origin: '*',
+  origin: true,
   methods: ['GET', 'POST', 'OPTIONS', 'HEAD'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Origin', 'Accept', 'Access-Control-Allow-Headers'],
   exposedHeaders: ['Content-Length', 'X-RateLimit-Limit', 'X-RateLimit-Remaining', 'Access-Control-Allow-Origin', 'Access-Control-Allow-Credentials'],
@@ -100,6 +113,9 @@ app.use(cors({
   maxAge: 86400,
   preflightContinue: false
 }));
+
+// Enable pre-flight requests for all routes
+app.options('*', cors());
 
 // Additional headers for CORS
 app.use((req, res, next) => {
