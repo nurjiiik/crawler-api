@@ -9,7 +9,7 @@ const HOST = process.env.HOST || '0.0.0.0';
 const initializeServer = async () => {
   let redisConnected = false;
 
-  // Try to connect to Redis but don't fail if unsuccessful
+  // Пробуем подключиться к Redis; если не удаётся, сервер всё равно запускается
   try {
     await connectRedis();
     redisConnected = true;
@@ -23,7 +23,7 @@ const initializeServer = async () => {
     logger.info(`Server is running on http://${HOST}:${PORT}`);
   });
 
-  // Retry Redis connection periodically if initial connection failed
+  // Если первое подключение не удалось, пробуем подключаться периодически
   if (!redisConnected) {
     const retryInterval = setInterval(async () => {
       try {
@@ -37,7 +37,7 @@ const initializeServer = async () => {
     }, 5000);
   }
 
-  // Handle graceful shutdown
+  // Обработка корректного завершения работы (graceful shutdown)
   const gracefulShutdown = async () => {
     try {
       logger.info('Received shutdown signal. Closing server...');

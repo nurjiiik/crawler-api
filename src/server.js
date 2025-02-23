@@ -9,7 +9,7 @@ const crawlLimiter = require('./middlewares/rateLimit');
 
 const app = express();
 
-// Initialize Redis
+// Флаги и таймеры для подключения к Redis
 let isRedisConnected = false;
 let isConnecting = false;
 let reconnectInterval = null;
@@ -22,13 +22,11 @@ const initializeRedis = async () => {
       await connectRedis();
       isRedisConnected = true;
       isConnecting = false;
-      
+
       if (reconnectTimeout) {
         clearTimeout(reconnectTimeout);
         reconnectTimeout = null;
       }
-
-      // Clear interval if connection is successful
       if (reconnectInterval) {
         clearInterval(reconnectInterval);
         reconnectInterval = null;
@@ -38,8 +36,7 @@ const initializeRedis = async () => {
     logger.error('Redis connection error:', error);
     isRedisConnected = false;
     isConnecting = false;
-    
-    // Schedule reconnection with exponential backoff
+    // Экспоненциальный бэкофф с максимальной задержкой 30 секунд
     const backoffDelay = Math.min((reconnectTimeout ? 10000 : 1000) * 2, 30000);
     reconnectTimeout = setTimeout(() => {
       logger.info(`Attempting to reconnect to Redis in ${backoffDelay}ms...`);
@@ -48,10 +45,10 @@ const initializeRedis = async () => {
   }
 };
 
-// Attempt Redis connection
+// Первоначальное подключение к Redis
 initializeRedis();
 
-// Periodically check Redis connection
+// Периодическая проверка подключения к Redis
 reconnectInterval = setInterval(async () => {
   if (!isRedisConnected && !isConnecting) {
     logger.info('Attempting to reconnect to Redis...');
@@ -59,7 +56,7 @@ reconnectInterval = setInterval(async () => {
   }
 }, 5000);
 
-// Cleanup function for Redis connection
+// Функция корректного завершения работы с Redis
 const cleanup = async () => {
   if (reconnectTimeout) {
     clearTimeout(reconnectTimeout);
@@ -79,70 +76,86 @@ const cleanup = async () => {
   }
 };
 
-// Handle graceful shutdown
 process.on('SIGTERM', cleanup);
 process.on('SIGINT', cleanup);
 
-// Middlewares
+// Основные middleware
 app.use(express.json());
 app.use(helmet({
-  crossOriginResourcePolicy: false,
-  crossOriginOpenerPolicy: false,
+  crossOriginResourcePolicy: { policy: 'cross-origin' },
+  crossOriginOpenerPolicy: { policy: 'unsafe-none' },
   crossOriginEmbedderPolicy: false,
-  contentSecurityPolicy: false
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'", '*'],
+      connectSrc: ["'self'", '*'],
+      frameSrc: ["'self'", '*'],
+      imgSrc: ["'self'", '*'],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", '*'],
+      styleSrc: ["'self'", "'unsafe-inline'", '*'],
+      workerSrc: ["'self'", 'blob:', '*']
+    },
+  }
 }));
+
+// Базовая настройка CORS через пакет cors
 app.use(cors({
   origin: true,
   methods: ['GET', 'POST', 'OPTIONS', 'HEAD', 'PUT', 'PATCH', 'DELETE'],
-  allowedHeaders: ['*', 'Content-Type', 'Authorization', 'X-Requested-With'],
-  exposedHeaders: ['*'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Origin', 'Accept'],
+  exposedHeaders: ['Content-Length', 'Content-Type', 'Access-Control-Allow-Origin'],
   credentials: true,
   optionsSuccessStatus: 204,
   maxAge: 86400,
   preflightContinue: false
 }));
 
-// Enable pre-flight requests for all routes
-app.options('*', cors());
-
-// Additional headers for CORS
+// Дополнительный middleware для CORS и обработки preflight-запросов
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  res.header('Access-Control-Allow-Credentials', 'true');
+  // Если credentials не требуются, можно передать false
+  res.header('Access-Control-Allow-Credentials', 'false');
+  res.header('Access-Control-Max-Age', '86400');
+  res.header('Access-Control-Expose-Headers', 'Content-Length, Content-Type, Access-Control-Allow-Origin');
+  res.header('Vary', 'Origin');
+  if (req.method === 'OPTIONS') {
+    res.status(204).end();
+    return;
+  }
   next();
 });
 
-// Swagger UI
+// Swagger UI для документации API
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerConfig));
 
-// API Routes with middleware
+// Основной маршрут API с ограничением частоты запросов
 app.use('/api/crawl', crawlLimiter, require('./controllers/crawlController'));
 
-// Health check route
+// Маршрут для проверки работоспособности сервера
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
-// Error handling
+// Обработка ошибок
 app.use((err, req, res, next) => {
   logger.error(`Server error: ${err.stack}`);
   res.setHeader('Content-Type', 'application/json');
-  
+
   if (err.type === 'entity.parse.failed') {
     return res.status(400).json({ error: 'Bad Request', message: 'Invalid JSON payload' });
   }
-  
+
   if (!isRedisConnected && req.path !== '/health') {
     return res.status(503).json({ error: 'Service Unavailable', message: 'Redis connection is not available' });
   }
-  
+
   const statusCode = err.statusCode || 500;
-  res.status(statusCode).json({ error: err.message || 'Internal server error' })
+  res.status(statusCode).json({ error: err.message || 'Internal server error' });
 });
 
-// Handle 404 errors
+// Обработка 404 (не найдено)
 app.use((req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.status(404).json({ error: 'Not Found' });

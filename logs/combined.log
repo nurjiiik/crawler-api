@@ -2458,3 +2458,15 @@
 {"level":"info","message":"Redis connected successfully","timestamp":"2025-02-23T12:00:19.651Z"}
 {"level":"info","message":"Crawl completed for URL: https://diaproperties.ae/","timestamp":"2025-02-23T12:02:44.719Z"}
 {"level":"info","message":"Received shutdown signal. Closing server...","timestamp":"2025-02-23T12:03:14.390Z"}
+{"level":"info","message":"Redis connection already established","timestamp":"2025-02-23T12:40:15.852Z"}
+{"level":"info","message":"Redis connection established","timestamp":"2025-02-23T12:40:15.870Z"}
+{"level":"info","message":"Server is running on http://0.0.0.0:3000","timestamp":"2025-02-23T12:40:15.880Z"}
+{"level":"info","message":"Redis connected successfully","timestamp":"2025-02-23T12:40:15.919Z"}
+{"level":"info","message":"Redis connection already established","timestamp":"2025-02-23T12:41:49.501Z"}
+{"level":"info","message":"Redis connection established","timestamp":"2025-02-23T12:41:49.514Z"}
+{"level":"info","message":"Server is running on http://0.0.0.0:3000","timestamp":"2025-02-23T12:41:49.520Z"}
+{"level":"info","message":"Redis connected successfully","timestamp":"2025-02-23T12:41:49.538Z"}
+{"level":"info","message":"Redis connection already established","timestamp":"2025-02-23T12:45:04.681Z"}
+{"level":"info","message":"Redis connection established","timestamp":"2025-02-23T12:45:04.685Z"}
+{"level":"info","message":"Server is running on http://0.0.0.0:3000","timestamp":"2025-02-23T12:45:04.690Z"}
+{"level":"info","message":"Redis connected successfully","timestamp":"2025-02-23T12:45:04.708Z"}
